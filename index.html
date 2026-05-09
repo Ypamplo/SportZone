@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SportZone | Tienda virtual de ropa deportiva</title>
+    <!-- Estilos principales -->
+    <link rel="stylesheet" href="styles.css" />
+    <!-- Estilos por componente -->
+    <link rel="stylesheet" href="styles-producto.css" />
+    <link rel="stylesheet" href="styles-carrito.css" />
+    <link rel="stylesheet" href="styles-tienda.css" />
+    <link rel="stylesheet" href="styles-factura.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#inicio" aria-label="Inicio SportZone">
+        <span class="brand-mark">SZ</span>
+        <span>SportZone</span>
+      </a>
+      <nav class="main-nav" aria-label="Navegacion principal">
+        <a href="#productos">Productos</a>
+        <a href="#beneficios">Beneficios</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+      <button class="cart-toggle" type="button" aria-label="Ver carrito">
+        Carrito <span id="cartCount">0</span>
+      </button>
+    </header>
+
+    <main>
+      <section class="hero" id="inicio" aria-label="Presentacion de la tienda">
+        <div class="hero-content">
+          <p class="eyebrow">Ropa deportiva para entrenar mejor</p>
+          <h1>SportZone</h1>
+          <p>
+            Camisetas transpirables, leggings de alto soporte y accesorios para
+            correr, entrenar y moverte con comodidad.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="#productos">Ver catalogo</a>
+            <a class="button secondary" href="#contacto">Solicitar asesoria</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="intro-band" aria-label="Resumen de servicios">
+        <article>
+          <strong>Envio rapido</strong>
+          <span>Despachos nacionales en 24 a 72 horas.</span>
+        </article>
+        <article>
+          <strong>Cambios faciles</strong>
+          <span>Garantia de talla durante los primeros 15 dias.</span>
+        </article>
+        <article>
+          <strong>Pagos seguros</strong>
+          <span>Compra con tarjeta, transferencia o pago contra entrega.</span>
+        </article>
+      </section>
+
+      <section class="section-wrap" id="productos">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Catalogo</p>
+            <h2>Productos destacados</h2>
+          </div>
+          <div class="filters" aria-label="Filtros de productos">
+            <button class="filter active" type="button" data-category="Todos">Todos</button>
+            <button class="filter" type="button" data-category="Ropa">Ropa</button>
+            <button class="filter" type="button" data-category="Calzado">Calzado</button>
+            <button class="filter" type="button" data-category="Accesorios">Accesorios</button>
+          </div>
+        </div>
+        <div class="product-grid" id="productGrid" aria-live="polite"></div>
+      </section>
+
+      <section class="benefits" id="beneficios">
+        <div class="benefits-copy">
+          <p class="eyebrow">Experiencia de compra</p>
+          <h2>Beneficios reales para comprar con confianza</h2>
+          <ul class="benefits-list">
+            <li>Entregas a domicilio en tu ciudad y a nivel nacional.</li>
+            <li>Entregas el mismo dia para productos seleccionados.</li>
+            <li>Cambios y devoluciones faciles segun la politica de la tienda.</li>
+            <li>Plan separe para reservar tus prendas favoritas.</li>
+            <li>Metodos de pago a credito para compras mas flexibles.</li>
+          </ul>
+        </div>
+        <div class="metrics" aria-label="Indicadores de la tienda">
+          <article><span>18</span><small>Referencias</small></article>
+          <article><span>4.8</span><small>Calificacion</small></article>
+          <article><span>15%</span><small>Oferta actual</small></article>
+        </div>
+      </section>
+
+      <section class="contact-section" id="contacto">
+        <div class="contact-copy">
+          <p class="eyebrow">Contacto</p>
+          <h2>Recibe una recomendacion de talla</h2>
+          <p>
+            Completa tus datos y un asesor te ayuda a elegir prendas segun tu
+            deporte, talla y frecuencia de entrenamiento.
+          </p>
+        </div>
+        <form class="contact-form">
+          <label>
+            Nombre completo
+            <input type="text" name="nombre" placeholder="Ej. Laura Gomez" required />
+          </label>
+          <label>
+            Correo electronico
+            <input type="email" name="correo" placeholder="correo@ejemplo.com" required />
+          </label>
+          <label>
+            Deporte principal
+            <select name="deporte">
+              <option>Running</option>
+              <option>Gimnasio</option>
+              <option>Ciclismo</option>
+              <option>Yoga</option>
+            </select>
+          </label>
+          <label>
+            Mensaje
+            <textarea name="mensaje" rows="4" placeholder="Cuentanos que necesitas"></textarea>
+          </label>
+          <button class="button primary" type="submit">Enviar solicitud</button>
+        </form>
+      </section>
+    </main>
+
+    <aside class="cart-panel" id="cartPanel" aria-label="Carrito de compras">
+      <div class="cart-header">
+        <h2>Carrito</h2>
+        <button class="close-cart" type="button" aria-label="Cerrar carrito">Cerrar</button>
+      </div>
+      <div class="cart-items" id="cartItems"></div>
+      <div class="cart-total">
+        <span>Total</span>
+        <strong id="cartTotal">$0</strong>
+      </div>
+      <div class="cart-actions">
+        <button class="button primary full" type="button" id="finalizarCompra">Finalizar compra</button>
+        <button class="button secondary full" type="button" id="vaciarCarrito">Vaciar carrito</button>
+      </div>
+    </aside>
+
+    <!-- Modal de Factura -->
+    <div class="factura-modal" id="facturaModal">
+      <div class="factura-modal-content">
+        <div id="facturaContenedor"></div>
+        <div class="factura-acciones">
+          <button class="factura-btn primario" id="btnDescargarFactura">
+            📥 Descargar PDF
+          </button>
+          <button class="factura-btn secundario" id="btnEnviarEmail">
+            📧 Enviar por Email
+          </button>
+          <button class="factura-btn secundario" id="btnImprimirFactura">
+            🖨️ Imprimir
+          </button>
+          <button class="factura-btn cerrar" id="btnCerrarFactura">
+            Cerrar
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+      <span>SportZone tienda virtual</span>
+      <span>Ropa deportiva, pagos flexibles y entregas rapidas</span>
+    </footer>
+
+    <!-- Scripts: Clases (Models) -->
+    <script src="Models/Producto.js"></script>
+    <script src="Models/Carrito.js"></script>
+    <script src="Models/Tienda.js"></script>
+    <script src="Models/Usuario.js"></script>
+    <script src="Models/Factura.js"></script>
+
+    <!-- Script principal -->
+    <script src="app.js"></script>
+  </body>
+</html>
